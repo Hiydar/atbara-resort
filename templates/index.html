@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+{% block title %}{{ pick(data.name) }}{% endblock %}
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <h1>{{ pick(data.name) }}</h1>
+    <p class="tagline">{{ pick(data.tagline) }}</p>
+    <div class="rating">⭐️ {{ data.rating.value }} <span>({{ data.rating.count }} {{ t.reviews }})</span></div>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#reserve">{{ t.reserve }}</a>
+      <a class="btn btn-outline" href="#menu">{{ t.view_menu }}</a>
+    </div>
+  </div>
+</section>
+
+{% if reserved %}
+<div class="container flash">
+  <div class="flash-success">✅ {{ t.success }}</div>
+</div>
+{% endif %}
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container narrow">
+    <h2 class="section-title">{{ t.about }}</h2>
+    <p class="lead">{{ pick(data.about) }}</p>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">{{ t.menu_title }}</h2>
+
+    <div class="menu-filters" id="menuFilters">
+      <button class="chip active" data-cat="all">{{ t.all }}</button>
+      {% for cat in data.menu.categories %}
+        <button class="chip" data-cat="{{ cat.id }}">{{ pick(cat.name) }}</button>
+      {% endfor %}
+    </div>
+
+    <div class="menu-grid" id="menuGrid">
+      {% for cat in data.menu.categories %}
+        {% for item in cat['items'] %}
+        <article class="dish-card" data-cat="{{ cat.id }}">
+          <div class="dish-image">
+            {% if item.image %}
+              <img src="{{ item.image }}" alt="{{ pick(item.name) }}" loading="lazy">
+            {% else %}
+              <span class="dish-emoji">{{ item.emoji or '🍽️' }}</span>
+            {% endif %}
+          </div>
+          <div class="dish-body">
+            <h3>{{ pick(item.name) }}</h3>
+            {% if item.desc and (item.desc.ar or item.desc.en) %}
+              <p class="dish-desc">{{ pick(item.desc) }}</p>
+            {% endif %}
+            <div class="dish-price">{{ item.price }}</div>
+          </div>
+        </article>
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+  <div class="container">
+    <h2 class="section-title">{{ t.gallery_title }}</h2>
+    <div class="gallery-grid">
+      {% for g in data.gallery %}
+      <figure class="gallery-item">
+        {% if g.image %}
+          <img src="{{ g.image }}" alt="{{ pick(g.caption) }}" loading="lazy">
+        {% else %}
+          <div class="gallery-placeholder">{{ g.emoji or '🖼️' }}</div>
+        {% endif %}
+        <figcaption>{{ pick(g.caption) }}</figcaption>
+      </figure>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section id="hours" class="section section-alt">
+  <div class="container narrow">
+    <h2 class="section-title">{{ t.hours_title }}</h2>
+    <table class="hours-table">
+      {% for h in data.hours %}
+      <tr>
+        <td>{{ pick(h.day) }}</td>
+        <td>{{ h.open }} — {{ h.close }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</section>
+
+<!-- CONTACT + MAP -->
+<section id="contact" class="section">
+  <div class="container contact-grid">
+    <div>
+      <h2 class="section-title">{{ t.contact_title }}</h2>
+      <p><strong>{{ t.address }}:</strong> {{ pick(data.contact.address) }}</p>
+      <p><strong>{{ t.phone }}:</strong>
+        <a href="tel:{{ data.contact.phone_click }}">{{ data.contact.phone_display }}</a>
+      </p>
+      <div class="contact-buttons">
+        <a class="btn btn-whatsapp"
+           href="https://wa.me/{{ data.contact.whatsapp }}?text={{ (t.order_whatsapp ~ ' - ' ~ data.name.ar)|urlencode }}"
+           target="_blank" rel="noopener">💬 {{ t.order_whatsapp }}</a>
+        <a class="btn btn-outline" href="tel:{{ data.contact.phone_click }}">📞 {{ t.call }}</a>
+      </div>
+    </div>
+    <div class="map-box">
+      {% if data.contact.map_embed %}
+        <iframe src="{{ data.contact.map_embed }}" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+      {% else %}
+        <div class="map-placeholder">🗺️ {{ t.no_map }}</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reserve" class="section section-alt">
+  <div class="container narrow">
+    <h2 class="section-title">{{ t.reserve_title }}</h2>
+    <p class="muted">{{ pick(data.reservation.note) }}</p>
+
+    <form method="post" action="{{ url_for('reserve') }}" class="reserve-form">
+      <div class="row">
+        <label>{{ t.name }}<input type="text" name="name" required></label>
+        <label>{{ t.phone }}<input type="tel" name="phone" required></label>
+      </div>
+      <div class="row">
+        <label>{{ t.date }}<input type="date" name="date" required></label>
+        <label>{{ t.time }}<input type="time" name="time" required></label>
+        <label>{{ t.guests }}<input type="number" name="guests" min="1" value="2" required></label>
+      </div>
+      <label>{{ t.notes }}<textarea name="notes" rows="2"></textarea></label>
+      <button type="submit" class="btn btn-primary">{{ t.submit }}</button>
+    </form>
+  </div>
+</section>
+
+{% endblock %}
