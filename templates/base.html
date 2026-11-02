@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="{{ lang }}" dir="{{ dir }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ pick(data.name) if data else 'Restaurant' }}{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="{{ url_for('index') }}" class="brand">
+      <span class="brand-mark">🐟</span>
+      <span class="brand-text">{{ pick(data.name) }}</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">{{ t.about }}</a>
+      <a href="#menu">{{ t.menu }}</a>
+      <a href="#gallery">{{ t.gallery }}</a>
+      <a href="#hours">{{ t.hours }}</a>
+      <a href="#contact">{{ t.contact }}</a>
+      <a href="#reserve" class="nav-cta">{{ t.reserve }}</a>
+    </nav>
+
+    <div class="nav-actions">
+      <a href="{{ url_for('set_lang', code=other_lang) }}" class="lang-btn">{{ t.switch }}</a>
+      <button class="burger" id="burger" aria-label="menu">☰</button>
+    </div>
+  </div>
+</header>
+
+{% block content %}{% endblock %}
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© {{ data.name.ar }} — {{ t.rights }}</p>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
