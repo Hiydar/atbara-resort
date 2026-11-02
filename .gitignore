@@ -1,0 +1,31 @@
+# Python
+pycache/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Environment variables & secrets
+.env
+.flaskenv
+
+# Flask instance folder
+instance/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Database & logs
+*.db
+*.sqlite3
+*.log
+
+# User data (reservations)
+data/reservations.jsonl
