@@ -1,0 +1,109 @@
+{
+  "_ملاحظة": "عدّل قيم الحقول فقط. لا تغيّر أسماء المفاتيح. كل حقل هنا يظهر تلقائياً في الموقع.",
+
+  "name": {
+    "ar": "منتجع العطبراوي للأسماك والمشويات",
+    "en": "Al-Atbarawi Fish & Grill Resort"
+  },
+  "tagline": {
+    "ar": "نكهة النيل في قلب عطبرة",
+    "en": "The taste of the Nile in the heart of Atbara"
+  },
+  "rating": {
+    "value": 4.3,
+    "count": 4
+  },
+
+  "about": {
+    "ar": "في منتجع العطبراوي نقدّم تجربة طعام أصيلة تجمع بين طزاجة الأسماك من نهر النيل ومشوياتنا المحضّرة على الفحم. موائدنا المفتوحة ترحّب بالعائلات والأصدقاء في أجواء دافئة.",
+    "en": "At Al-Atbarawi we serve an authentic dining experience combining fresh Nile fish with charcoal-grilled meats. Our open tables welcome families and friends in a warm atmosphere."
+  },
+
+  "contact": {
+    "phone_display": "+249 «ضع هنا رقم الهاتف»",
+    "phone_click":   "+249XXXXXXXXX",
+    "whatsapp":      "249XXXXXXXXX",
+    "address": {
+      "ar": "عطبرة، السودان — «ضع هنا الحي والمربع»",
+      "en": "Atbara, Sudan — «put street/square here»"
+    },
+    "map_embed": "«ضع رابط Google Maps Embed هنا أو اتركه فارغاً»",
+    "social": {
+      "facebook":  "",
+      "instagram": "",
+      "tiktok":    ""
+    }
+  },
+
+  "hours": [
+    { "day": { "ar": "السبت – الخميس", "en": "Sat – Thu" }, "open": "11:00", "close": "23:00" },
+    { "day": { "ar": "الجمعة",           "en": "Friday"     }, "open": "13:00", "close": "23:30" }
+  ],
+
+  "menu": {
+    "categories": [
+      {
+        "id": "fish",
+        "name": { "ar": "الأسماك", "en": "Fish" },
+        "items": [
+          { "name": { "ar": "سمك بلطي مشوي", "en": "Grilled Tilapia" },
+            "desc": { "ar": "طازج من النيل، مشوي على الفحم", "en": "Fresh from the Nile, charcoal-grilled" },
+            "price": "«السعر»", "image": "", "emoji": "🐟" },
+          { "name": { "ar": "سمك بياض مشوي", "en": "Grilled Bayad" },
+            "desc": { "ar": "بياض طازج مع توابل المنتجع", "en": "Fresh catfish with house spices" },
+            "price": "«السعر»", "image": "", "emoji": "🐠" }
+        ]
+      },
+      {
+        "id": "grill",
+        "name": { "ar": "المشويات", "en": "Grills" },
+        "items": [
+          { "name": { "ar": "كباب لحم", "en": "Beef Kebab" },
+            "desc": { "ar": "لحم بقري متبّل ومشوي", "en": "Marinated beef, charcoal-grilled" },
+            "price": "«السعر»", "image": "", "emoji": "🍢" },
+          { "name": { "ar": "كفتة مشوية", "en": "Grilled Kofta" },
+            "desc": { "ar": "كفتة لحم مفروم مع بقدونس", "en": "Minced beef kofta with parsley" },
+            "price": "«السعر»", "image": "", "emoji": "🥩" },
+          { "name": { "ar": "دجاج مشوي", "en": "Grilled Chicken" },
+            "desc": { "ar": "نصف دجاج متبّل ومشوي", "en": "Half chicken, marinated & grilled" },
+            "price": "«السعر»", "image": "", "emoji": "🍗" }
+        ]
+      },
+      {
+        "id": "sides",
+        "name": { "ar": "المقبلات والسلطات", "en": "Sides & Salads" },
+        "items": [
+          { "name": { "ar": "سلطة بلدية", "en": "House Salad" },
+            "desc": { "ar": "خضار طازجة", "en": "Fresh vegetables" },
+            "price": "«السعر»", "image": "", "emoji": "🥗" },
+          { "name": { "ar": "عيش بلدي", "en": "Local Bread" },
+            "desc": { "ar": "طازج يومياً", "en": "Baked daily" },
+            "price": "«السعر»", "image": "", "emoji": "🥖" }
+        ]
+      },
+      {
+        "id": "drinks",
+        "name": { "ar": "المشروبات", "en": "Drinks" },
+        "items": [
+          { "name": { "ar": "شاي", "en": "Tea" }, "desc": { "ar": "", "en": "" },
+            "price": "«السعر»", "image": "", "emoji": "☕️" },
+          { "name": { "ar": "عصير ليمون", "en": "Lemon Juice" }, "desc": { "ar": "", "en": "" },
+            "price": "«السعر»", "image": "", "emoji": "🍋" }
+        ]
+      }
+    ]
+  },
+  "gallery": [
+    { "image": "", "caption": { "ar": "جلسة عائلية", "en": "Family seating" }, "emoji": "🪑" },
+    { "image": "", "caption": { "ar": "سمك مشوي",    "en": "Grilled fish"  }, "emoji": "🐟" },
+    { "image": "", "caption": { "ar": "مشويات",      "en": "Grills"        }, "emoji": "🔥" },
+    { "image": "", "caption": { "ar": "المدخل",      "en": "Entrance"      }, "emoji": "🏠" }
+  ],
+
+  "reservation": {
+    "note": {
+      "ar": "سنؤكد حجزك عبر واتساب خلال دقائق.",
+      "en": "We'll confirm your booking on WhatsApp within minutes."
+    }
+  }
+}
